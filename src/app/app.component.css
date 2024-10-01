@@ -1,0 +1,251 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* This ensures elements are spaced out */
+  padding: 0 1px;
+  z-index: 2;
+}
+
+.logo {
+  width: 100px; 
+  height: 100px; 
+  background-image: url('../assets/logo.png');
+  background-size: contain; 
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 5px;
+}
+
+.greeting {
+  margin-left: auto; /* Pushes the greeting text to the right */
+  margin-right: 1px;
+  font-size: 18px; /* Adjust font size as needed */
+  color: white; /* Ensures the text color is white */
+}
+
+.logout-button {
+  background-color: black; /* Adjust the button color as needed */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #EB660B; /* Adjust the hover color as needed */
+}
+
+.background-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  padding-top: 60px; 
+}
+
+.background-container::before {
+  content: "";
+  background-image: url('../assets/background_image.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  color: white; 
+}
+
+/* Full-screen background image */
+.background-image {
+  position: fixed;
+  top: 6px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/background_image.png'); /* Replace with your image path */
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+/* Centered and resized calendar */
+.calendar-container {
+  transform: scale(0.90) !important;
+  transform-origin: top left;
+  position: absolute; 
+  width: 60%;
+  margin: 0; /* Removes auto centering */
+  top: 60px; /* Adjust this value based on the height of your header */
+  left: 0; /* Aligns the calendar to the left of the screen */
+  background-color: rgba(12, 7, 7, 0.8); /* Semi-transparent background */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Toolbar styles */
+.col-md-4 {
+  display: flex;
+  align-items: center; /* Align items vertically center */
+  justify-content: flex-start;
+  margin-bottom: 15px;
+}
+
+.cal-toolbar button {
+  height: 40px;
+  background-color: #EB660B;
+  border-radius: 9px;
+  outline: none;
+}
+
+.left-button {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background-image: url('../assets/left.png'); 
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: center left 10px; 
+  padding-left: 40px; 
+}
+
+.right-button {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-image: url('../assets/right.png'); 
+  background-size: 30px 30px; 
+  background-repeat: no-repeat;
+  background-position: center right 10px; 
+  padding-right: 40px; 
+}
+
+.cal-toolbar h3{
+  margin: 0;
+  color: antiquewhite;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.centered-div {
+  display: flex;
+  width: 100%;
+  justify-content: center; /* Horizontal centering */
+  align-items: center;    /* Vertical centering   */
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 999; /* Behind the modal */
+}
+
+/* Current Day */
+:host ::ng-deep .cal-month-view .cal-day-cell.cal-today {
+  background-color: #EB660B !important;
+}
+
+/* All other days */
+:host ::ng-deep .cal-month-view .cal-day-cell:not(.cal-today) {
+  background-color: #000000 !important;
+}
+
+/* Two Buttons */
+.button-container {
+  position: fixed; /* Fixes position relative to the viewport */
+  bottom: 20px; /* Distance from the bottom of the viewport */
+  left: 20px; /* Distance from the left side of the viewport */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align the buttons to the start (left) */
+}
+
+.draft-button,
+.submit-button {
+  margin: 5px; /* Add some space between buttons */
+  padding: 10px 20px; /* Adjust padding for the buttons */
+  font-size: 16px; /* Adjust font size */
+  border: none;
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer;
+}
+
+.draft-button {
+  background-color: #000000; /* Black background */
+  color: #fff; /* White text color */
+}
+
+.submit-button {
+  background-color: #EB660B; /* Orange background */
+  color: #fff; /* White text color */
+}
+
+/* Day numbers for all days */
+:host ::ng-deep .cal-month-view .cal-day-cell {
+  color: #fff !important;
+}
+
+:host ::ng-deep .cal-month-view .cal-day-cell .cal-day-number {
+  font-weight: bold !important;
+}
+
+/* Style Saturdays & Sundays*/
+:host ::ng-deep .cal-month-view .cal-day-cell:nth-child(7n) {
+  background-color: #BFBCB7 !important;
+}
+
+:host ::ng-deep .cal-month-view .cal-day-cell:nth-child(7n-1) {
+  background-color: #BFBCB7 !important;
+}
+
+/* Previous and next month's days in current month's view with diagonal stripes */
+:host ::ng-deep .cal-month-view .cal-day-cell.cal-out-month {
+  font-size: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    #444,
+    #444 4px,
+    black 5px,
+    black 5px
+  );
+}
+/* :host ::ng-deep .cal-month-view .cal-day-cell {
+  min-height: 30px;
+  height: 60px;
+  max-height: 200px;
+}
+
+:host ::ng-deep .cal-month-view .cal-day-cell {
+  min-height: 30px; 
+  height: 60px;
+  max-height: 200px;
+}
+
+:host ::ng-deep .cal-month-view .cal-cell-top{
+  min-height: 30px; 
+  height: 60px;
+  max-height: 200px;
+} */

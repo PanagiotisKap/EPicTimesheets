@@ -1,0 +1,32 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '20.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install -g @angular/cli
+    npm install
+    ng build --configuration production
+  displayName: 'npm install and build'
+
+- script: |
+    mkdir -p artifacts  # Create a directory called 'artifacts'
+    cp -r dist/epic-calendar-website/browser/* artifacts/  # Copy built files from 'dist/browser' to 'artifacts'
+  displayName: 'Copy necessary files to artifacts'
+
+- script: |
+    cd artifacts
+    zip -r ../deploy.zip .  # Create a zip file from the artifacts directory
+  displayName: 'Create deployment zip file'
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    artifactName: 'deploy'
+    targetPath: 'deploy.zip'  # Publish the zip file

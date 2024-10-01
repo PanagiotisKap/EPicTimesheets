@@ -1,0 +1,38 @@
+trigger:
+  branches:
+    include:
+      - main
+
+jobs:
+- job: SyncRepos
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+    - checkout: self
+
+    - script: |
+        git config --global user.email "pankap316i@hotmail.com"
+        git config --global user.name "PanagiotisKap"
+
+        if git remote get-url github >/dev/null 2>&1; then
+            git remote remove github
+        fi
+
+        git remote add github https://$(GITHUB_TOKEN)@github.com/PanagiotisKap/EPicTimesheets.git
+        git clean -fd
+        git fetch github
+
+        if git rev-parse --quiet --verify main; then
+            git checkout main
+        else
+            git checkout -b main
+        fi
+
+        # Create an orphan branch and reset the remote
+        git checkout --orphan new-main
+        git commit --allow-empty -m "Resetting the repository"
+        echo "Overwriting remote branch with local changes..."
+        git push github new-main:main --force
+      displayName: 'Sync ADO Repo with GitHub'
+      env:
+        GITHUB_TOKEN: $(GITHUB_TOKEN)

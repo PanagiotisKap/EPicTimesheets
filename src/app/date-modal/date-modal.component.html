@@ -1,0 +1,59 @@
+<div class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="onClose()">&times;</span>
+    <p class="modal-data">{{ modalData }}</p>
+
+    <!-- Toggle buttons for second set of inputs -->
+    <div class="plus-minus-buttons">
+      <button (click)="toggleSetNew(true)">+</button>
+      <button (click)="toggleSetNew(false)">-</button>
+    </div>
+
+    <!-- First set of inputs -->
+    <div class="inputs-wrapper">
+      <p>From:</p>
+      <input type="text" id="working-hour-from-1" [(ngModel)]="workingHourFrom1" (input)="formatTime('working-hour-from-1')" maxlength="5" placeholder="HH:mm">
+      <p>To:</p>
+      <input type="text" id="working-hour-to-1" [(ngModel)]="workingHourTo1" (input)="formatTime('working-hour-to-1')" maxlength="5" placeholder="HH:mm">
+    </div>
+
+    <!-- Second set of inputs, conditionally visible -->
+    <div class="inputs-wrapper" *ngIf="showSecondSet">
+      <p>From:</p>
+      <input type="text" id="working-hour-from-2" [(ngModel)]="workingHourFrom2" (input)="formatTime('working-hour-from-2')" maxlength="5" placeholder="HH:mm">
+      <p>To:</p>
+      <input type="text" id="working-hour-to-2" [(ngModel)]="workingHourTo2" (input)="formatTime('working-hour-to-2')" maxlength="5" placeholder="HH:mm">
+    </div>    
+
+    <!-- Third set of inputs, conditionally visible -->
+    <div class="inputs-wrapper" *ngIf="showThirdSet">
+      <p>From:</p>
+      <input type="text" id="working-hour-from-3" [(ngModel)]="workingHourFrom3" (input)="formatTime('working-hour-from-3')" maxlength="5" placeholder="HH:mm">
+      <p>To:</p>
+      <input type="text" id="working-hour-to-3" [(ngModel)]="workingHourTo3" (input)="formatTime('working-hour-to-3')" maxlength="5" placeholder="HH:mm">
+    </div>
+
+    <!-- Fourth set of inputs, conditionally visible -->
+    <div class="inputs-wrapper" *ngIf="showFourthSet">
+      <p>From:</p>
+      <input type="text" id="working-hour-from-4" [(ngModel)]="workingHourFrom4" (input)="formatTime('working-hour-from-4')" maxlength="5" placeholder="HH:mm">
+      <p>To:</p>
+      <input type="text" id="working-hour-to-4" [(ngModel)]="workingHourTo4" (input)="formatTime('working-hour-to-4')" maxlength="5" placeholder="HH:mm">
+    </div>
+
+    <!-- Multiline Text Box -->
+    <div class="textarea-wrapper">
+      <p>Notes:</p>
+      <textarea id="notes" [(ngModel)]="notes" placeholder="Enter your notes here..." rows="3" maxlength="200"></textarea>
+    </div>
+
+    <div>
+      <button class="styled-button" (click)="onSave()">Save</button>
+      <button class="styled-button apply-to-all-button" (click)="onApplyToAll()">Apply to all</button>
+    </div> 
+  </div>  
+</div>
+
+
+
+

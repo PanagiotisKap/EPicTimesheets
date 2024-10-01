@@ -1,0 +1,44 @@
+<div class="header">
+  <div class="logo"></div>
+  <div class="greeting">Hi Vasiliki!</div>
+  <button class="logout-button" (click)="logout()">log out</button>
+</div>
+
+
+<div class="background-image">
+  <div class="calendar-container">
+    <div *ngIf="showModal" class="overlay"></div>
+    <div class="cal-toolbar">
+      <div class="col-md-4">
+        <button mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate" class="btn btn-primary left-button">
+          <!-- Previous -->
+        </button>
+        <button mwlCalendarNextView [view]="view" [(viewDate)]="viewDate" class="btn btn-primary right-button">
+          <!-- Next -->
+        </button>
+        <div class="centered-div">
+        <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+        </div> 
+      </div>
+    </div>
+    <mwl-calendar-month-view *ngIf="view === CalendarView.Month" [viewDate]="viewDate" [events]="events" [weekStartsOn]="1"    
+            (eventClicked)="handleEventClicked($event,$event)" (dayClicked)="handleDayClicked($event,$event)" [refresh]="refresh"
+    ></mwl-calendar-month-view>
+    <div style="position: relative;">
+    </div>
+  </div>
+  
+  <div class="button-container">
+    <button class="draft-button">Save as draft</button>
+    <button class="submit-button">Submit</button>
+  </div>
+  
+  <app-date-modal 
+  *ngIf="showModal" 
+  [modalData]="modalData" 
+  (closeModal)="handleModalClose()" 
+  (saveData)="handleModalSaveDate($event)">
+</app-date-modal>
+
+
+</div>

@@ -1,0 +1,187 @@
+/* Modal container styles */
+.modal {
+  display: flex;
+  justify-content: flex-end; 
+  align-items: center; 
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden; /* Prevent scrollbars */
+  background: rgba(0, 0, 0, 0.5); /* Darken background to focus on modal */
+}
+
+/* Modal content styles */
+.modal-content {
+  background-color: #fdfdfd;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 10px; 
+  box-shadow: 6px 6px 6px 0px rgba(0, 0, 0, 0.45); /* Applied box-shadow from .original-box-shadow */
+  max-width: 90vw; 
+  max-height: 90vh; 
+  overflow: hidden; 
+  display: flex;
+  flex-direction: column; 
+  box-sizing: border-box; 
+  margin-right: 180px; 
+}
+
+/* Header styles */
+.modal-content .modal-data {
+  font-size: 18px;
+  text-align: center;
+  color: antiquewhite;
+  background-color: #EB660B;
+  padding: 8px;
+  border-radius: 12px;
+  margin-bottom: 20px; /* Reduced margin for better fitting */
+  width: 200px; /* Allow width to be dynamic */
+}
+
+/* Container for plus and minus buttons */
+.plus-minus-buttons {
+  display: flex;
+  justify-content: left;
+  margin-bottom: 20px; /* Space below the button container */
+}
+
+/* General style for the toggle buttons */
+.plus-minus-buttons button {
+  border: none;
+  color: antiquewhite;
+  padding: 4px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 9px;
+  transition: background-color 0.3s, transform 0.2s;
+  margin: 0 2px;
+}
+
+/* Style for the + button */
+.plus-minus-buttons button:nth-of-type(1) {
+  background-color: #000000; /* Green background for + button */
+}
+
+/* Style for the - button */
+.plus-minus-buttons button:nth-of-type(2) {
+  background-color: #000000; /* Red background for - button */
+}
+
+/* Hover effect for both buttons */
+.plus-minus-buttons button:hover {
+  background-color: #1e1e1e;
+  transform: scale(1.05);
+}
+
+/* Inputs wrapper styles */
+.modal-content .inputs-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+/* Input label styles */
+.modal-content .inputs-wrapper p {
+  margin-right: 5px;
+}
+
+/* Input field styles */
+.modal-content input {
+  width: 100px;
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 5px;
+  font-size: 17px;
+  margin-left: 5px;
+}
+
+/* Textarea container styles */
+.textarea-wrapper {
+  margin-top: 20px; 
+}
+
+/* Textarea styles */
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+  font-size: 17px;
+  box-sizing: border-box; 
+  resize: vertical; 
+  transition: border-color 0.3s ease; 
+}
+
+/* Focused textarea styles */
+textarea:focus {
+  border-color: #EB660B; 
+  outline: none; 
+}
+
+/* Close button styles */
+.close {
+  color: #777777;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  line-height: 0.5;
+  margin-left: 330px; 
+}
+
+/* Close button hover and focus styles */
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Button styles */
+.styled-button {
+  background-color: #EB660B; /* Orange background */
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  margin-top: 20px; /* Space above the button */
+}
+
+.styled-button:hover {
+  background-color: #ff6804; /* Darker orange on hover */
+}
+
+/* Black button with white text for "Apply to all" */
+.apply-to-all-button {
+  background-color: black; 
+  color: white; 
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+  margin-left: 5px; 
+}
+
+/* Hover effect for "Apply to all" button */
+.apply-to-all-button:hover {
+  background-color: #333; /* Slightly lighter black on hover */
+}
+
+
